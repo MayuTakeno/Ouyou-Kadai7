@@ -1,0 +1,1 @@
+$('#comment-btn_<%= @book.id %>').html("<%= j(render partial: 'book_comments/comment', locals: {book: @comment.book, book_comment: @book_comment }) %>");
