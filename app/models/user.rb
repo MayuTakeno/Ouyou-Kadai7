@@ -36,6 +36,10 @@ class User < ApplicationRecord
     reverse_of_relationships.find_by(following_id: user.id).present?
   end
 
+  def following?(user)
+    followings.include?(user)
+  end
+
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
 
