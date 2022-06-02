@@ -1,5 +1,5 @@
 <div class='container px-5 px-sm-0'>
-      <% if current_user.id != @user.id %>
+      <% if current_user.id != @user.id && current_user.following?(@user) && @user.following?(current_user) %>
         <%= link_to "DM", chat_path(@user.id) %>
       <% end %>
   <div class='row'>
