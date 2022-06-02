@@ -1,4 +1,4 @@
-class CahtsController < ApplicationController
+class ChatsController < ApplicationController
   def show
     #Bさんのユーザー情報の取得
     @user = User.find(params[:id])
