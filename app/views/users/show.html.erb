@@ -1,4 +1,7 @@
 <div class='container px-5 px-sm-0'>
+      <% if current_user.id != @user.id %>
+        <%= link_to "DM", chat_path(@user.id) %>
+      <% end %>
   <div class='row'>
     <div class='col-md-3'>
       <h2>User info</h2>
