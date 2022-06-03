@@ -1,40 +1,46 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのメッセージ</h1>
-      <table class="message table" style="width: 400px;">
-        <thead>
-          <tr>
-            <th style="text-align: left; font-size: 20px;" ><%= current_user.name %></th>
-            <th style="text-align: right; font-size:20px;"><%= @user.name %></th>
-          </tr>
-        </thead>
-        <% @chats.each do |chat| %>
-          <% if chat.user_id == current_user.id %>
-          <tbody>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのメッセージ</h1>
+        <table class="table" style="width: 600px;">
+          <thead>
             <tr>
-              <th>
-                <p style="text-align:left;"><%= chat.message %></p>
-              </th>
+              <th style="text-align: left; font-size: 20px;" ><%= current_user.name %></th>
+              <th style="text-align: right; font-size:20px;"><%= @user.name %></th>
             </tr>
-          <% else %>
-            <tr>
-              <th>
-                <p style="text-align:right;"><%= chat.message %></p>
-              </th>
-            </tr>
-          </tbody>
+          </thead>
+          <% @chats.each do |chat| %>
+            <% if chat.user_id == current_user.id %>
+            <tbody>
+              <tr>
+                <th>
+                  <span style='text-align: left;'><%= chat.message %></span>
+                </th>
+              </tr>
+            <% else %>
+              <tr>
+                <th>
+                  <span style='text-align: right;'><%= chat.message %></span>
+                </th>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      </table>
-      <div class="errors">
-        <%= render'layouts/errors', obj: @chat %>
-      </div>
-      <%= form_with model: @chat, data: {remote: true} do |f| %>
-        <%= f.text_field :message %>
-        <%= f.hidden_field :room_id %>
-        <%= f.submit "SEND", class: "btn btm-sm btn-success chat-btn" %>
-      <% end %>
+          <tr>
+            <th>
+              <span class="message">
+                <div class="errors">
+                  <%= render'layouts/errors', obj: @chat %>
+                </div>
+                <%= form_with model: @chat, local: false, data: {remote: true} do |f| %>
+                  <%= f.text_field :message %>
+                  <%= f.hidden_field :room_id %>
+                  <%= f.submit "message", class: "btn btn-sm btn-success chat-btn" %>
+                <% end %>
+              </span>
+            </th>
+          </tr>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>
