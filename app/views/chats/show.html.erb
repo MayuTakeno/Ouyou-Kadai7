@@ -17,16 +17,22 @@
                   <span style='text-align: left;'><%= chat.message %></span>
                 </th>
               </tr>
+            </tbody>
             <% else %>
+            <tbody>
               <tr>
                 <th>
                   <span style='text-align: right;'><%= chat.message %></span>
                 </th>
               </tr>
+            </tbody>
             <% end %>
           <% end %>
-          <tr>
-            <th>
+          </table>
+
+          
+          <!--<tr>-->
+            <!--<th>-->
               <span class="message">
                 <div class="errors">
                   <%= render'layouts/errors', obj: @chat %>
@@ -37,10 +43,9 @@
                   <%= f.submit "message", class: "btn btn-sm btn-success chat-btn" %>
                 <% end %>
               </span>
-            </th>
-          </tr>
-          </tbody>
-        </table>
+            <!--</th>-->
+          <!--</tr>-->
+        <!--</table>-->
     </div>
   </div>
 </div>
