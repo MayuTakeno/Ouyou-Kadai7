@@ -41,4 +41,26 @@
      </td>
    </tr>
   </tbody>
+  <tbody>
+   <tr>
+    <td>６日前</td>
+    <td>５日前</td>
+    <td>４日前</td>
+    <td>３日前</td>
+    <td>２日前</td>
+    <td>昨日</td>
+    <td>今日</td>
+   </tr>
+  </tbody>
+  <tbody>
+   <tr>
+    <td><%= books.created_6days.count %></td>
+    <td><%= books.created_5days.count %></td>
+    <td><%= books.created_4days.count %></td>
+    <td><%= books.created_3days.count %></td>
+    <td><%= books.created_2days.count %></td>
+    <td><%= yesterday_book.count %></td>
+    <td><%= today_book.count %></td>
+   </tr>
+  </tbody>
  </tabel>
