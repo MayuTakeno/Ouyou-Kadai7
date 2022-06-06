@@ -14,13 +14,13 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import "jquery";
+//import "jquery";
 import "popper.js";
 import "bootstrap";
-import "chart.js";
-import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+import "../stylesheets/application"
+//import "chart.js";
 
 Rails.start()
-Turbolinks.start()
+//Turbolinks.start()
 ActiveStorage.start()
