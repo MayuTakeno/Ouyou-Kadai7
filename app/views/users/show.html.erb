@@ -12,6 +12,7 @@
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index',books: @books, book: @book, user: @user %>
+      <%= render 'dairy_posts_form', user: @user %>
       <%= render 'post_number',books: @books, today_book: @today_book, yesterday_book: @yesterday_book, this_week_book: @this_week_book, last_week_book: @last_week_book %>
     </div>
   </div>

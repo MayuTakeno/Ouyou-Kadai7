@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get :followings, on: :member
     get :followers, on: :member
-    get "dairy_posts", to: "users#dairy_posts"
+    get "dairy_posts" => "users#dairy_posts"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
