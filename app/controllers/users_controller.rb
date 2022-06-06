@@ -52,16 +52,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
   
-  def search
-    @user = User.find(params[:user_id])
-    @books = @user.books
-    @book = Book.new
-    if params[:created_at] == ""
-      @search_book = "日付を選択してください"
-    else
-      created_at = params[:created_at]
-      @search_book = @books.where(['created_at FAVORITE ? ', "#{create_at}%"]).count
-    end
+  def dairy_posts
+    user = User.find(params[:id])
+    @books = user.books.where(created_at: params[:created_at].to_date.all_day)
+    render :dairy_posts_form
   end
 
     private
