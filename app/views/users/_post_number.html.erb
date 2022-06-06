@@ -2,8 +2,12 @@
   <thead>
     <tr>
       <th>今日の投稿数</th>
-      <th>前日の前日の投稿数</th>
+      <th>前日の投稿数</th>
       <th>前日比</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -12,12 +16,13 @@
       <td><%= yesterday_book.count %></td>
       <td>
         <% if yesterday_book.count == 0 %>
-          前日の投稿はありません
+          <td>前日の投稿はありません</td>
         <% else %>
           <% the_day_before = today_book.count / yesterday_book.count.to_f %>
           <%= (the_day_before * 100).round %>
         <% end %>
       </td>
+      <td></td>
     </tr>
   </tbody>
   <tbody>
@@ -54,40 +59,55 @@
   </tbody>
   <tbody>
     <tr>
-      <td><%= books.created_6days.count %></td>
-      <td><%= books.created_5days.count %></td>
-      <td><%= books.created_4days.count %></td>
-      <td><%= books.created_3days.count %></td>
-      <td><%= books.created_2days.count %></td>
+      <td><%= books.created_day_ago(6).count %></td>
+      <td><%= books.created_day_ago(5).count %></td>
+      <td><%= books.created_day_ago(4).count %></td>
+      <td><%= books.created_day_ago(3).count %></td>
+      <td><%= books.created_day_ago(2).count %></td>
       <td><%= yesterday_book.count %></td>
       <td><%= today_book.count %></td>
     </tr>
   </tbody>
 </tabel>
  
-<canvas id="myLineChart"></canvas>
+<canvas id="myLineChart" width="400" height="400"></canvas>
   <script>
     $(document).on('turbolinks:load', function(){
-      var ctx = document.getElementById("myLineChart");
-      var myLineChart = new Chart(ctx, {
+      var ctx = document.getElementById('myLineChart').getContext('2d');
+      var chart = new Chart(ctx, {
         type: 'line',
         data: {
           labels: ['６日前','５日前','４日前','３日前','２日前','今日'],
-          datasets:[
-            {
+          datasets:[{
               label: '投稿した本の数',
-              data:
-                [
-                  <%= books.created_6days.count %>,
-                  <%= books.created_5days.count %>,
-                  <%= books.created_4days.count %>,
-                  <%= books.created_3days.count %>,
-                  <%= books.created_2days.count %>,
-                  <%= yesterday_book.count %>,
-                  <%= today_book.count %>
-                ],
-              borderColor: "rgba(0, 0, 255, 1)",
-              backgroundColor: "rgba(0, 0, 0, 0)",
+              data: [
+                <%= books.created_day_ago(6).count %>,
+                <%= books.created_day_ago(5).count %>,
+                <%= books.created_day_ago(4).count %>,
+                <%= books.created_day_ago(3).count %>,
+                <%= books.created_day_ago(2).count %>,
+                <%= yesterday_book.count %>,
+                <%= today_book.count %>
+              ],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(54, 102, 86, 1)',
+              ],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(54, 102, 86, 0.2)',
+              ],
+              tensions: 0.4
             }
           ],
         },
@@ -97,16 +117,13 @@
             text: '７日間の投稿数の比較'
           },
           scales: {
-            yAxes: [{
-              ticks: {
-                suggestedMax: 10,
-                suggestedMin: 0,
-                stepSize: 1,
-                callback: function(value, index, values){
-                  return value
-                }
-              }
-            }]
+            y:{
+              suggestedMin: 0,
+              suggestedMax: 10
+            },
+            x:{
+              stacked: true
+            },
           },
         }
       });

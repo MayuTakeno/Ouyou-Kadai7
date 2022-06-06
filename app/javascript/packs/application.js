@@ -6,6 +6,8 @@
 require("@rails/ujs").start()
 //= require rails ujs
 require("@rails/activestorage").start()
+//= require Chart.min
+
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -15,6 +17,7 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+import "chart.js";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
