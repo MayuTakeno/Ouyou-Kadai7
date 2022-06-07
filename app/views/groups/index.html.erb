@@ -1,3 +1,4 @@
+<%= render 'form', group: @group %>
 <div class="container">
   <div class="row">
     <div class="col-md-2"></div>
@@ -15,7 +16,7 @@
         <tbody>
           <% @groups.each do |group| %>
             <tr>
-              <td><%= attachment_image_tag(group, :image, :file, 50, 50, fallback: "no_image-icon.jpg") %></td>
+              <td><%= attached_image_tag(group, :image, :file, 50, 50, fallback: "no-image-icon.jpg") %></td>
               <td><%= link_to group.name, group_path(group) %></td>
               <td>
                 <% if group.owner_id == current_user.id %>
