@@ -9,10 +9,10 @@ class Group < ApplicationRecord
   validates :introduction, presence: true
  
   def get_image
-    (image.attached?) ? image : 'no-image.jpg'
+    (image.attached?) ? image : 'no_image.jpg'
   end
  
   def is_owned_by?(user)
-    owned.id == user.id
+    owner.id == user.id
   end
 end

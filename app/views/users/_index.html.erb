@@ -18,8 +18,11 @@
           </p>
         </td>
         <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
-        <td><%= link_to "グループ一覧", groups_path %></td>
         <td><%= render 'relationships/ff', user: user, relationships: @relationships %></td>
+        <td>
+          <%= link_to "グループを作成する", new_group_path, class: 'btn btn-sm btn-info' %><br><br>
+          <%= link_to "グループ一覧", groups_path, class: 'btn btn-sm btn-info' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

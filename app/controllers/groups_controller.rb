@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
  
   def new
-    @group = group.new
+    @group = Group.new
   end
   
   def index
@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to groups_path
     else
-      render :index
+      render :new
     end
   end
  
