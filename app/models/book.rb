@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
 
   has_one_attached :image
-  belongs_to :user
+  belongs_to :user  
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :week_favorites, ->  { where(created_at: ((Time.current.at_end_of_day 
