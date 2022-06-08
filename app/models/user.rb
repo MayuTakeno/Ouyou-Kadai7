@@ -59,4 +59,3 @@ class User < ApplicationRecord
   end
 
 end
-attr_reader :
