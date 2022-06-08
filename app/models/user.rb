@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
+  
   has_many :books, dependent: :destroy
   has_many :group_users
   has_many :groups, through: :group_users
@@ -58,3 +59,4 @@ class User < ApplicationRecord
   end
 
 end
+attr_reader :
