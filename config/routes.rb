@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   patch "books/:id" => "books#update", as: "update_book"
   patch "users/:id" => "users#update", as: "update_user"
   
-  resources :groups, except: [:destroy]
+  resources :groups, except: [:destroy] do
+    
   resources :homes, only: [:top, :about]
   resources :chats, only: [:show, :create]
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
