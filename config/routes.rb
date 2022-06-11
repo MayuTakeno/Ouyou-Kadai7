@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   
   resources :groups, except: [:destroy] do
     resource :group_users, only: [:create, :destroy]
+    resources :event_notices, only: [:new, :create]
+    get "event_notices" => "event_notices#sent"
   end
   resources :homes, only: [:top, :about]
   resources :chats, only: [:show, :create]
