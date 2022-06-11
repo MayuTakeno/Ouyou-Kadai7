@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   patch "users/:id" => "users#update", as: "update_user"
   
   resources :groups, except: [:destroy] do
-    
+    resource :group_users, only: [:create, :destroy]
+  end
   resources :homes, only: [:top, :about]
   resources :chats, only: [:show, :create]
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do

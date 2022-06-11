@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   
   has_many :books, dependent: :destroy
-  has_many :group_users
+  has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
   has_many :book_comments, dependent: :destroy
   has_many :rooms, through: :user_rooms
